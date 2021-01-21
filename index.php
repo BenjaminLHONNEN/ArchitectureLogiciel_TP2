@@ -49,7 +49,7 @@ function HasGetParam(string $parameterName)
 /**
  * @param string $parameterName
  * @param bool $throwError
- * @return bool|mixed
+ * @return null|mixed
  * @throws Exception
  */
 function GetParam(string $parameterName, bool $throwError = false)
@@ -60,7 +60,7 @@ function GetParam(string $parameterName, bool $throwError = false)
     if ($throwError) {
         throw new Exception("Please provide a valid email address");
     }
-    return true;
+    return null;
 }
 
 /**
