@@ -20,6 +20,11 @@ try {
     echo $e->getMessage();
 }
 
+
+/**
+ * @param string $domainToCheck
+ * @return bool
+ */
 function IsDomainAccepted(string $domainToCheck)
 {
     if (!in_array($domainToCheck, SPAM_DOMAINS)) {
@@ -29,6 +34,10 @@ function IsDomainAccepted(string $domainToCheck)
 }
 
 
+/**
+ * @param string $parameterName
+ * @return bool
+ */
 function HasGetParam(string $parameterName)
 {
     if (!empty($_GET) && !empty($_GET[$parameterName])) {
@@ -37,6 +46,12 @@ function HasGetParam(string $parameterName)
     return false;
 }
 
+/**
+ * @param string $parameterName
+ * @param bool $throwError
+ * @return bool|mixed
+ * @throws Exception
+ */
 function GetParam(string $parameterName, bool $throwError = false)
 {
     if (HasGetParam($parameterName)) {
@@ -48,6 +63,12 @@ function GetParam(string $parameterName, bool $throwError = false)
     return true;
 }
 
+/**
+ * @param string $email
+ * @param bool $throwError
+ * @return bool
+ * @throws Exception
+ */
 function EmailIsValid(string $email, bool $throwError = false)
 {
     if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -61,6 +82,12 @@ function EmailIsValid(string $email, bool $throwError = false)
     return false;
 }
 
+/**
+ * @param $email
+ * @param bool $throwError
+ * @return mixed|string|null
+ * @throws Exception
+ */
 function GetEmailDomain($email, bool $throwError = false)
 {
     if (HasDomain($email)) {
@@ -74,6 +101,10 @@ function GetEmailDomain($email, bool $throwError = false)
 }
 
 
+/**
+ * @param string $email
+ * @return bool
+ */
 function HasDomain(string $email)
 {
     $emailParts = explode('@', $email);
